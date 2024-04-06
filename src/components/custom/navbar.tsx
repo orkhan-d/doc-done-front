@@ -7,6 +7,7 @@ import {
     NavigationMenuLink,
     NavigationMenuList, navigationMenuTriggerStyle
 } from "@/components/ui/navigation-menu";
+import {ModeToggle} from "@/components/custom/theme-toggle-button";
 
 const Navbar = () => {
     return (
@@ -27,6 +28,7 @@ const Navbar = () => {
                         Register
                     </NavigationMenuLink>
                 </Link>
+                <ModeToggle/>
             </div>
         </NavigationMenu>
     );
