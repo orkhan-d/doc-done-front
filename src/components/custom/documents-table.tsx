@@ -9,15 +9,43 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table"
-import {TiTick} from "@react-icons/all-files/ti/TiTick";
 import {DownloadIcon} from "@radix-ui/react-icons";
-import {CircleCheckBig, SidebarClose} from "lucide-react";
 import {Button} from "@/components/ui/button";
-import { IoMdCloseCircleOutline } from "@react-icons/all-files/io/IoMdCloseCircleOutline";
-import {Input} from "@/components/ui/input";
 import {Checkbox} from "@/components/ui/checkbox";
 
+interface IDocument {
+    name: string,
+    doctype: string,
+    fix: boolean,
+    date: string,
+    status: boolean,
+}
+
 const DocumentsTable = () => {
+    const documents = Array<IDocument | null>(100).fill(null).map((u, i): IDocument => ({
+        name: `Document ${i + 1}`,
+        doctype: `Document type ${i + 1}`,
+        fix: i % 2 == 0,
+        date: `Some date ${i + 1}`,
+        status: i % 2 == 1,
+    })).map((v, i) =>
+        <TableRow key={i}>
+            <TableCell>
+                <Button variant={"ghost"} size={"icon"}>
+                    <DownloadIcon/>
+                </Button>
+            </TableCell>
+            <TableCell>{v.name}</TableCell>
+            <TableCell>{v.doctype}</TableCell>
+            <TableCell>
+                <Button size={"icon"} variant={"ghost"}>
+                    <Checkbox checked={v.fix}/>
+                </Button>
+            </TableCell>
+            <TableCell>{v.date}</TableCell>
+            <TableCell>{v.status ? 'Done' : 'Pending...'}</TableCell>
+        </TableRow>
+    )
     return (
         <Table>
             <TableCaption>A list of your recent invoices.</TableCaption>
@@ -32,38 +60,7 @@ const DocumentsTable = () => {
                 </TableRow>
             </TableHeader>
             <TableBody>
-                <TableRow>
-                    <TableCell>
-                        <Button variant={"ghost"} size={"icon"}>
-                            <DownloadIcon/>
-                        </Button>
-                    </TableCell>
-                    <TableCell>SomeBoringDocument</TableCell>
-                    <TableCell>Official document</TableCell>
-                    <TableCell>
-                        <Button size={"icon"} variant={"ghost"}>
-                            <Checkbox checked={false}/>
-                        </Button>
-                    </TableCell>
-                    <TableCell>January 27, 2024</TableCell>
-                    <TableCell>Done</TableCell>
-                </TableRow>
-                <TableRow>
-                    <TableCell>
-                        <Button variant={"ghost"} size={"icon"}>
-                            <DownloadIcon/>
-                        </Button>
-                    </TableCell>
-                    <TableCell>SomeBoringDocument</TableCell>
-                    <TableCell>Official document</TableCell>
-                    <TableCell>
-                        <Button size={"icon"} variant={"ghost"}>
-                            <Checkbox checked={true}/>
-                        </Button>
-                    </TableCell>
-                    <TableCell>January 30, 2024</TableCell>
-                    <TableCell>Pending</TableCell>
-                </TableRow>
+                {documents}
             </TableBody>
         </Table>
     );
