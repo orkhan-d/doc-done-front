@@ -9,16 +9,18 @@ import {
 } from "@/components/ui/navigation-menu";
 import {ModeToggle} from "@/components/custom/theme-toggle-button";
 import {cn} from "@/lib/utils";
-import {ButtonIcon} from "@radix-ui/react-icons";
-import {PencilIcon, FilesIcon, LucideLogIn} from "lucide-react"
+import {PencilIcon, FilesIcon, LucideLogIn, MenuIcon, MountainIcon} from "lucide-react"
 import {Button} from "@/components/ui/button";
+import {Sheet, SheetClose, SheetContent, SheetTrigger} from "@/components/ui/sheet";
 
 const Navbar = () => {
     return (
-        <div className={"border-b-2 border-b-grey-300 dark:border-b-grey-600"}>
-            <NavigationMenu className={"max-w-[1360px] mx-auto p-2"}>
+        <div className={"border-b-2 border-b-grey-300 dark:border-b-grey-600 p-3"}>
+            <NavigationMenu className={"hidden lg:flex max-w-[1360px] mx-auto"}>
                 <Link href={"/"} legacyBehavior passHref>
-                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                    <NavigationMenuLink className={cn(
+                        navigationMenuTriggerStyle(), 'text-xl font-bold'
+                    )}>
                         Doc-Done
                     </NavigationMenuLink>
                 </Link>
@@ -43,6 +45,44 @@ const Navbar = () => {
                     <ModeToggle/>
                 </div>
             </NavigationMenu>
+            <div className={"flex justify-between items-center flex-row lg:hidden"}>
+                <Link href={"/"} className={'text-xl font-bold'} legacyBehavior passHref>
+                    <Button variant={"outline"}>
+                        Doc-Done
+                    </Button>
+                </Link>
+                <Sheet>
+                    <SheetTrigger asChild>
+                        <Button className="" size="icon" variant="outline">
+                            <MenuIcon className="h-6 w-6" />
+                        </Button>
+                    </SheetTrigger>
+                    <SheetContent side="left">
+                        <div className={"grid grid-cols-1 gap-4"}>
+                            <SheetClose asChild>
+                                <Link className="flex w-full items-center py-2 text-lg font-semibold" href="/">
+                                    Home
+                                </Link>
+                            </SheetClose>
+                            <SheetClose asChild>
+                                <Link className="flex w-full items-center py-2 text-lg font-semibold" href="/documents">
+                                    My documents
+                                </Link>
+                            </SheetClose>
+                            <SheetClose asChild>
+                                <Link className="flex w-full items-center py-2 text-lg font-semibold" href="/rules">
+                                    My rules
+                                </Link>
+                            </SheetClose>
+                            <SheetClose asChild>
+                                <Link className="flex w-full items-center py-2 text-lg font-semibold" href="/auth">
+                                    Sign in / Sign up
+                                </Link>
+                            </SheetClose>
+                        </div>
+                    </SheetContent>
+                </Sheet>
+            </div>
         </div>
     );
 };
