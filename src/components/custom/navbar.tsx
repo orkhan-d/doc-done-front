@@ -10,7 +10,7 @@ import {
 import {ModeToggle} from "@/components/custom/theme-toggle-button";
 import {cn} from "@/lib/utils";
 import {ButtonIcon} from "@radix-ui/react-icons";
-import {LogIn, LucideLogIn, Sun} from "lucide-react"
+import {PencilIcon, FilesIcon, LucideLogIn} from "lucide-react"
 import {Button} from "@/components/ui/button";
 
 const Navbar = () => {
@@ -22,6 +22,18 @@ const Navbar = () => {
                         Doc-Done
                     </NavigationMenuLink>
                 </Link>
+                <div className={"flex space-x-1"}>
+                    <Link href={"/documents"} legacyBehavior passHref>
+                        <Button variant="ghost">
+                            <FilesIcon className="mr-2 h-4 w-4"/> My Documents
+                        </Button>
+                    </Link>
+                    <Link href={"/rules"} legacyBehavior passHref>
+                        <Button variant="ghost">
+                            <PencilIcon className="mr-2 h-4 w-4"/> My rules
+                        </Button>
+                    </Link>
+                </div>
                 <div className={"flex space-x-1"}>
                     <Link href={"/auth"} legacyBehavior passHref>
                         <Button variant="outline" size="icon">
