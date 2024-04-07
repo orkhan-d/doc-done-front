@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/custom/navbar";
 import { ThemeProvider } from "@/components/theme-provider"
+import Footer from "@/components/custom/footer";
+import {cn} from "@/lib/utils";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,7 +20,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={cn(
+          inter.className, "flex overflow-y-scroll h-[100dvh] flex-col justify-between"
+      )}>
           <ThemeProvider
               attribute="class"
               defaultTheme="system"
@@ -27,6 +31,7 @@ export default function RootLayout({
           >
               <Navbar/>
               {children}
+              <Footer/>
           </ThemeProvider>
       </body>
     </html>

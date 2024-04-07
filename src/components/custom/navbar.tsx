@@ -9,10 +9,13 @@ import {
 } from "@/components/ui/navigation-menu";
 import {ModeToggle} from "@/components/custom/theme-toggle-button";
 import {cn} from "@/lib/utils";
+import {ButtonIcon} from "@radix-ui/react-icons";
+import {LogIn, LucideLogIn, Sun} from "lucide-react"
+import {Button} from "@/components/ui/button";
 
 const Navbar = () => {
     return (
-        <div className={"border-b-2 border-b-gray-400"}>
+        <div className={"border-b-2 border-b-grey-300 dark:border-b-grey-600"}>
             <NavigationMenu className={"max-w-[1360px] mx-auto p-2"}>
                 <Link href={"/"} legacyBehavior passHref>
                     <NavigationMenuLink className={navigationMenuTriggerStyle()}>
@@ -20,15 +23,10 @@ const Navbar = () => {
                     </NavigationMenuLink>
                 </Link>
                 <div className={"flex space-x-1"}>
-                    <Link href={"/login"} legacyBehavior passHref>
-                        <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                            Login
-                        </NavigationMenuLink>
-                    </Link>
-                    <Link href={"/register"} legacyBehavior passHref>
-                        <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                            Register
-                        </NavigationMenuLink>
+                    <Link href={"/auth"} legacyBehavior passHref>
+                        <Button variant="outline" size="icon">
+                            <LucideLogIn className="h-[1.2rem] w-[1.2rem] color-accent rotate-0 scale-100 transition-all"/>
+                        </Button>
                     </Link>
                     <ModeToggle/>
                 </div>

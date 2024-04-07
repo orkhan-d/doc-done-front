@@ -8,7 +8,7 @@ import {Input} from "@/components/ui/input";
 import {Button} from "@/components/ui/button";
 import {Icons} from "@/components/custom/icons";
 
-export function UserLoginForm() {
+export function UserRegisterForm() {
     const [isLoading, setIsLoading] = React.useState<boolean>(false)
 
     async function onSubmit(event: React.SyntheticEvent) {
@@ -25,13 +25,28 @@ export function UserLoginForm() {
             <div className="grid gap-2">
                 <div className="grid gap-1">
                     <Label className="sr-only" htmlFor="email">
+                        Your name
+                    </Label>
+                    <Input
+                        id="name"
+                        placeholder="Name"
+                        type="text"
+                        autoCapitalize={"on"}
+                        autoCorrect="off"
+                        disabled={isLoading}
+                    />
+                </div>
+                <div className="grid gap-1">
+                    <Label className="sr-only" htmlFor="email">
                         Email
                     </Label>
                     <Input
                         id="email"
                         placeholder="name@example.com"
                         type="email"
-                        autoFocus={false}
+                        autoCapitalize="none"
+                        autoComplete="email"
+                        autoCorrect="off"
                         disabled={isLoading}
                     />
                 </div>
