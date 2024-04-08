@@ -13,7 +13,7 @@ import {
     DialogTitle,
     DialogTrigger
 } from "@/components/ui/dialog";
-import {AddDocumentForm} from "@/components/custom/add-document-form";
+import {AddDocumentRulesForm} from "@/components/custom/add-document-rules";
 
 const Page = () => {
     const [showDialog, setShowDialog] = useState(false);
@@ -27,25 +27,25 @@ const Page = () => {
             <div className={"py-14 flex flex-col gap-8"}>
                 <div>
                     <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
-                        There is list of all your documents
+                        There is list of all your documents rules
                     </h3>
                     <p className="text-sm text-muted-foreground">
-                        All documents after status becomes done lasts for 3 days and automatically delete
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus excepturi impedit tenetur. Asperiores blanditiis cumque facere magnam modi numquam porro quam quidem, quis recusandae rerum tenetur vitae? Animi, consequatur, harum.
                     </p>
                 </div>
                 <div>
                     <Dialog open={showDialog} onOpenChange={setShowDialog}>
                         <DialogTrigger asChild>
-                            <Button onClick={() => setShowDialog(true)}>Add document</Button>
+                            <Button onClick={() => setShowDialog(true)}>Add document rules</Button>
                         </DialogTrigger>
-                        <DialogContent className="sm:max-w-[425px]">
+                        <DialogContent className="max-w-[425px] lg:max-w-fit">
                             <DialogHeader>
-                                <DialogTitle>Add document to queue</DialogTitle>
+                                <DialogTitle>Add document rules</DialogTitle>
                                 <DialogDescription>
                                     After adding, you&#39;ll need to wait for a queue
                                 </DialogDescription>
                             </DialogHeader>
-                            <AddDocumentForm submitFunc={() => setShowDialog(false)}/>
+                            <AddDocumentRulesForm submitFunc={() => setShowDialog(false)}/>
                         </DialogContent>
                     </Dialog>
                 </div>

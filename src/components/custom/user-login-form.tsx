@@ -19,7 +19,7 @@ import {Icons} from "@/components/custom/icons";
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
-import {loginSchema} from "@/schemas/auth-schemas";
+import {loginSchema} from "@/schemas/schemas";
 
 export function UserLoginForm() {
     const [isLoading, setIsLoading] = React.useState<boolean>(false)

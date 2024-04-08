@@ -44,6 +44,11 @@ const DocumentsTable = () => {
             </TableCell>
             <TableCell>{v.date}</TableCell>
             <TableCell>{v.status ? 'Done' : 'Pending...'}</TableCell>
+            <TableCell>
+                <Button variant={"ghost"} size={"icon"} disabled={!v.status}>
+                    <DownloadIcon/>
+                </Button>
+            </TableCell>
         </TableRow>
     )
     return (
@@ -57,6 +62,7 @@ const DocumentsTable = () => {
                     <TableHead>To fix</TableHead>
                     <TableHead>Added at</TableHead>
                     <TableHead>Status</TableHead>
+                    <TableHead>Result</TableHead>
                 </TableRow>
             </TableHeader>
             <TableBody>

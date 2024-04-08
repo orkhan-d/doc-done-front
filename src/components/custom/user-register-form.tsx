@@ -9,7 +9,7 @@ import {Button} from "@/components/ui/button";
 import {Icons} from "@/components/custom/icons";
 import {useForm} from "react-hook-form";
 import {z} from "zod";
-import {loginSchema, registerSchema} from "@/schemas/auth-schemas";
+import {loginSchema, registerSchema} from "@/schemas/schemas";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form";
 
